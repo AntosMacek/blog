@@ -28,5 +28,5 @@ public class ModelsTest extends WithApplication {
         assertNull(User.authenticate("bob@gmail.com", "badpassword"));
         assertNull(User.authenticate("tom@gmail.com", "secret"));
     }
-    
+
 }

@@ -1,0 +1,14 @@
+# Users
+
+- &antoha !!models.User
+    email:      mawinbm@gmail.com
+    name:       Antoha
+    password:   secret
+
+# Posts
+
+- !!models.Post
+    title:    Hallo
+    author:   World
+    content:  Hallo, World!
+    date:     Big Bang

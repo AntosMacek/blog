@@ -1,0 +1,49 @@
+@(form: Form[Post], user: User)
+
+<html>
+
+    <head>
+        <title>Gotta post</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Post to Antoha's blog</h1>
+            @if(user != null) {
+                <a href="@routes.Application.logout()">Logout</a>
+            }
+        </header>
+
+        @helper.form(routes.Application.writing) {
+
+            @if(form.hasGlobalErrors) {
+                <p class="error">
+                @form.globalError.message
+                </p>
+            }
+
+            @if(flash.contains("success")) {
+                <p class="success">
+                @flash.get("success")
+                </p>
+            }
+            <p>
+                <input type="text" name="title" placeholder="Post title" value="@form("title").value">
+            </p>
+            <p>
+                <input type="text" name="content" placeholder="Write here..." value="@form("content").value">
+            </p>
+            @helper.textarea(field = form("content"), args = 'rows -> 5, 'cols -> 60)
+
+            <p>
+                <button type="submit">Post</button>
+            </p>
+        }
+
+
+
+    </body>
+
+</html>
