@@ -10,39 +10,41 @@
     <body>
 
         <header>
-            <h1>Post to Antoha's blog</h1>
+            <a href="@routes.Application.index()"><h1>Antoha's blog</h1></a>
             @if(user != null) {
                 <a href="@routes.Application.logout()">Logout</a>
             }
+            <p>Logged as @user.name</p>
         </header>
 
-        @helper.form(routes.Application.writing) {
+        <div id="post_form">
 
-            @if(form.hasGlobalErrors) {
-                <p class="error">
-                @form.globalError.message
+            @helper.form(routes.Application.newPost()) {
+
+                @if(form.hasGlobalErrors) {
+                    <p class="error">
+                    @form.globalError.message
+                    </p>
+                }
+
+                @if(flash.contains("success")) {
+                    <p class="success">
+                    @flash.get("success")
+                    </p>
+                }
+                <p>
+                    <input type="text" name="title" placeholder="Post title" value="@form("title").value">
+                </p>
+                <p>
+                    @helper.textarea(field = form("content"), args = 'rows -> 5, 'cols -> 60)
+                </p>
+
+                <p>
+                    <button type="submit">Post</button>
                 </p>
             }
 
-            @if(flash.contains("success")) {
-                <p class="success">
-                @flash.get("success")
-                </p>
-            }
-            <p>
-                <input type="text" name="title" placeholder="Post title" value="@form("title").value">
-            </p>
-            <p>
-                <input type="text" name="content" placeholder="Write here..." value="@form("content").value">
-            </p>
-            @helper.textarea(field = form("content"), args = 'rows -> 5, 'cols -> 60)
-
-            <p>
-                <button type="submit">Post</button>
-            </p>
-        }
-
-
+        </div>
 
     </body>
 

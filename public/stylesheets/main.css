@@ -1,18 +1,22 @@
 body {
-    text-align: center;
     font-family: "DejaVu Sans";
+    width: 75%;
+    margin: 0 auto;
 }
 
 header {
     border-bottom: solid;
     border-bottom-color: black;
+    border-width: 5px;
     padding: 10px;
     margin: 10px;
+    text-align: center;
 }
 
 article {
     border: solid;
     border-color: darkgray;
+    border-width: 6px;
     margin: 15px;
 }
 
@@ -28,6 +32,24 @@ ul {
     list-style-type: none;
     margin: 10px;
     padding: 0;
+}
+
+li {
+    margin: 5px;
+    border: solid;
+    border-color: gray;
+    border-width: 2px;
+}
+
+li header {
+    border-width: 1px;
+}
+
+li p {
+    text-align: justify;
+    padding: 2px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 header a {
@@ -53,4 +75,8 @@ a:hover {
 a:active {
     color: darkgray;
     text-decoration: underline;
+}
+
+#post_form {
+    text-align: center;
 }

@@ -7,8 +7,8 @@
 
 # Posts
 
-- !!models.Post
-    title:    Hallo
-    author:   World
-    content:  Hallo, World!
-    date:     Big Bang
+#- !!models.Post
+#    title:    Antoha's bio
+#    author:   Antoha
+#    content:  Hallo, World!
+#    date:     Big Bang

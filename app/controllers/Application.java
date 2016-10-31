@@ -9,14 +9,21 @@ import static play.data.Form.*;
 import models.*;
 import views.html.*;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Application extends Controller {
 
-//    public static User currentUser = User.find.byId(request().username());
-
     public static Result index() {
+        List<Post> posts = Post.find.all();
+        Collections.reverse(posts);
         return ok(index.render(
-                Post.find.all()
+                posts
         ));
+    }
+
+    public static Result bio() {
+        return ok(bio.render());
     }
 
     @Security.Authenticated(Secured.class)
@@ -62,8 +69,24 @@ public class Application extends Controller {
             session().clear();
             session("email", loginForm.get().email);
             return redirect(
-                    routes.Application.index()
+                    routes.Application.write()
             );
+        }
+    }
+
+    static Form<Post> postForm = Form.form(Post.class);
+
+    public static Result newPost() {
+        Form<Post> filledForm = postForm.bindFromRequest();
+        if(filledForm.hasErrors()) {
+            return badRequest(
+                    write.render(
+                            Form.form(Post.class),
+                            User.find.byId(request().username())
+                    ));
+        } else {
+            Post.create(filledForm.get());
+            return redirect(routes.Application.index());
         }
     }
 

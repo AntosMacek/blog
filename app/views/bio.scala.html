@@ -1,4 +1,3 @@
-@(posts: List[Post])
 <html>
     <head>
         <title>Antoha's blog</title>
@@ -10,21 +9,18 @@
 
         <header>
             <a href="@routes.Application.index"><h1>Antoha's blog</h1></a>
-            <h2>There are some thoughts of <a href="@routes.Application.bio()">HIM</a></h2>
+            <h2>About me</h2>
         </header>
 
         <article class="posts">
 
             <ul>
-            @for(post <- posts) {
                 <li>
                     <header>
-                        <div class="title">@post.title</div>
-                        <div class="author">@post.author posted on @post.date</div>
+                        <div class="title">Antoha's bio</div>
                     </header>
-                    <p>@post.content</p>
+                    <p>Here goes my biography!</p>
                 </li>
-            }
             </ul>
 
         </article>

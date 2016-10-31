@@ -7,7 +7,7 @@ create table post (
   id                        bigint not null,
   title                     varchar(255),
   author                    varchar(255),
-  content                   varchar(255),
+  content                   TEXT,
   date                      varchar(255),
   constraint pk_post primary key (id))
 ;
